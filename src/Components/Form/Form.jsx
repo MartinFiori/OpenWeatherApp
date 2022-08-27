@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import s from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ handleSetDetails }) => {
+	const navigate = useNavigate();
+
 	// Declaro el estado 'data' para guardar el valor de los
 	// inputs del formulario y así buscar el lugar por coordenadas
 	const [data, setData] = useState({
@@ -20,11 +23,23 @@ const Form = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
+
+	// si hay data.longitud y data.latitud, seteo en el componente padre
+	// la información del useState data
+	const handleSubmit = e => {
+		e.preventDefault();
+		if (longitud && latitud) {
+			handleSetDetails(data);
+			// una vez esté hecha la Promise para setear los detalles con la info
+			// uso el useNavigate para redireccionar a los detalles
+			navigate("/weather");
+		}
+	};
 	return (
 		<div className={s.formContainer}>
 			{/* con el evento onSubmit prevengo al formulario de refrescar
       la página cuando se submitee */}
-			<form onSubmit={e => e.preventDefault()}>
+			<form onSubmit={e => handleSubmit(e)}>
 				<h2 className={s.formTitle}>¡Consulte el clima!</h2>
 				<label htmlFor="latitud">Ingrese una latitud:</label>
 				<input

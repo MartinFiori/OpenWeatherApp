@@ -1,5 +1,6 @@
 var axios = require("axios");
 
+// con este axios recibimos la latitud y longitud para hacer el llamdo a la api
 const getCountryDetails = async (lat_value, lon_value) => {
 	var config = {
 		method: "get",

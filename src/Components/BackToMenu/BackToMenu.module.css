@@ -1,0 +1,10 @@
+.btnMenu {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	border-radius: 5px;
+	padding: 0.6em;
+	background: var(--green);
+	color: var(--black);
+	font-weight: 600;
+}

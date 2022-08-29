@@ -13,7 +13,6 @@ const AppRouter = () => {
 	const handleSetDetails = async value => {
 		setLoading(true);
 		const data = await getCountryDetails(value.latitud, value.longitud);
-		console.log(data);
 		const { name, weather, main } = data;
 		setDetails({
 			title: name,

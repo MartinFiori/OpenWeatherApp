@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./Form.module.css";
 
@@ -39,25 +39,34 @@ const Form = ({ handleSetDetails }) => {
 		<div className={s.formContainer}>
 			{/* con el evento onSubmit prevengo al formulario de refrescar
       la página cuando se submitee */}
-			<form onSubmit={e => handleSubmit(e)}>
+			<form onSubmit={e => handleSubmit(e)} className={s.form}>
 				<h2 className={s.formTitle}>¡Consulte el clima!</h2>
-				<label htmlFor="latitud">Ingrese una latitud:</label>
+				<label htmlFor="latitud" className={s.label}>
+					Ingrese una latitud:
+				</label>
 				<input
-					style={{ color: "red" }}
+					className={s.input}
 					type="number"
 					name="latitud"
 					value={latitud}
 					onChange={e => handleSetData(e)}
 				/>
-				<label htmlFor="latitud">Ingrese una longitud:</label>
+				<label htmlFor="latitud" className={s.label}>
+					Ingrese una longitud:
+				</label>
 				<input
-					style={{ color: "red" }}
+					className={s.input}
 					type="number"
 					name="longitud"
 					value={longitud}
 					onChange={e => handleSetData(e)}
 				/>
-				<input type="submit" value="Buscar ubicación" />
+				<input
+					type="submit"
+					value="Buscar ubicación"
+					// validacion que nos sirve para no buscar en la api con valores del useState "data" vacíos
+					className={`${s.submit} ${(!longitud || !latitud) && s.disabled}`}
+				/>
 			</form>
 		</div>
 	);

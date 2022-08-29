@@ -6,9 +6,12 @@
 	--black: #16161a;
 	--black-darker: #16161a;
 	--purple: #7f5af0;
+	--purple10: rgba(127, 90, 240, 0.1);
 	--white: #fffffe;
 	--gray: #94a1b2;
+	--gray10: rgba(148, 161, 178, 0.1);
 	--gray-darker: #242629;
+	--green: #2cb67d;
 }
 
 /* resets */
@@ -35,4 +38,14 @@ img {
 
 body {
 	background: var(--black);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
 }
